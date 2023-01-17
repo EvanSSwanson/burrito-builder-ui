@@ -21,11 +21,15 @@ class OrderForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const newOrder = {
-      ...this.state
+    if(this.state.name !== "" && this.state.ingredients.length > 0) {
+      const newOrder = {
+        ...this.state
     }
     this.props.addOrder(newOrder)
     this.clearInputs();
+    } else {
+      alert("Please provide a name and at least one ingredient!")
+    }
   }
 
   clearInputs = () => {
