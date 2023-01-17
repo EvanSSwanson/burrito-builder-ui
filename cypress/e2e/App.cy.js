@@ -22,6 +22,10 @@ describe('Burrito builder', () => {
     cy.get(".order").eq(2).contains("lettuce")
     cy.get(".order").eq(2).contains("sour cream")
   })
+  it("should update the type field", () => {
+    cy.get(".input-bar").clear().type("Ron")
+    cy.get(".input-bar").should("have.value", "Ron")
+  })
   it("should be able to add order", () => {
     cy.intercept("http://localhost:3001/api/v1/orders",
     {method:"POST", fixture: "newMockOrder.json"})
