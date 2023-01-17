@@ -18,6 +18,10 @@ class App extends Component {
       .catch(err => console.error('Error fetching:', err));
   }
 
+  addOrder = () => {
+    
+  }
+
   render() {
     return (
       <main className="App">
