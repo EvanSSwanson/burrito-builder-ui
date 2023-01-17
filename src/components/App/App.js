@@ -27,7 +27,10 @@ class App extends Component {
 
   removeOrder = (orderId) => {
     deleteOrder(orderId)
-    const updatedOrders = this.state.orders
+    getOrders()
+    .then(data => this.setState({orders: data.orders}))
+      .catch(err => console.error('Error fetching:', err));
+    document.location.reload()
   }
 
   render() {
