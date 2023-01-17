@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { getOrders, postOrder } from '../../apiCalls';
+import { getOrders, postOrder, deleteOrder } from '../../apiCalls';
 import Orders from '../../components/Orders/Orders';
 import OrderForm from '../../components/OrderForm/OrderForm';
 
@@ -25,15 +25,20 @@ class App extends Component {
       })
   }
 
+  removeOrder = (orderId) => {
+    deleteOrder(orderId)
+    const updatedOrders = this.state.orders
+  }
+
   render() {
     return (
       <main className="App">
         <header>
-          <h1>Burrito Builder</h1>
+          <h1 className="site-title">Burrito Builder</h1>
           <OrderForm addOrder={this.addOrder}/>
         </header>
 
-        <Orders orders={this.state.orders}/>
+        <Orders orders={this.state.orders} removeOrder={this.removeOrder}/>
       </main>
     );
   }
